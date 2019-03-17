@@ -1,7 +1,16 @@
 <?php
 
-mysql_connect( 'localhost', 'wywo', 'r122!wywo' );
-mysql_select_db( 'wywo' );
+$mysqli = new mysqli('localhost', 'root', 'universe', 'concierge');
+if ($mysqli->connect_error)
+{
+    $error = [
+        'MySQLi connect error (',
+        $mysqli->connect_errno,
+        '): ',
+        $mysqli->connect_error
+    ];
+    throw new Exception(implode('', $error));
+}
 
 function clean_text( $str ) {
 	$cleanup = array( ' ', '/', '-', '.' );
