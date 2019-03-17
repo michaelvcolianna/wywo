@@ -5,7 +5,6 @@ ini_set('display_errors', true);
 #	-----	Load functions common to all GR Server apps.
 #			Then kick out front of house and mobile devices.
 require('genius.php');
-if( get_domain() == 'foh' || get_device() != 'Macintosh' ) { die( header( 'Location:../' ) ); }
 
 #	-----	Load basic WYWO functions.
 require('php/basic.php');
