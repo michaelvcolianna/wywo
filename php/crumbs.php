@@ -28,7 +28,7 @@ if (isset($_POST['login']))
 		$go = ( $_GET['go'] == 'add' ) ? '?area=add' : '';
 
 	// Log 'em in and redirect accordingly.
-		setcookie( 'wywo_user', $login[0]['cn'][0] );
+		setcookie( 'wywo_user', $login );
 		setcookie( 'wywo_pass', $_POST['password'] );
         header('Location:./' . $go);
         exit();
