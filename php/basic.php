@@ -13,7 +13,13 @@ $business_calls = mysqli_num_rows($mysqli->query("SELECT * FROM `calls` WHERE `t
 $manager_calls = mysqli_num_rows($mysqli->query("SELECT * FROM `calls` WHERE `type`='manager'"));
 
 #	-----	The text for the "login/logout" link.
-if( $_COOKIE['wywo_user'] ) { $crumbs = 'Log Out (' . $_COOKIE['wywo_user'] . ')'; }
-else { $crumbs = 'Log In'; }
+if (isset($_COOKIE['wywo_user']))
+{
+    $crumbs = 'Log Out (' . $_COOKIE['wywo_user'] . ')';
+}
+else
+{
+    $crumbs = 'Log In';
+}
 
 		// Copyright: 2010 by Michael V. Colianna ?>

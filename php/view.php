@@ -3,9 +3,13 @@
 		//	Revision: 3.0.6
 
 #	-----	Account for viewing the types of calls.
-if( $_GET['view'] == 'genius' || $_GET['view'] == 'business' || $_GET['view'] == 'manager' ) {
+$search = '';
+$title = '';
+$view_types = ['genius', 'business', 'manager'];
+if (isset($_GET['view']) && in_array($_GET['view'], $view_types))
+{
 	$search = " WHERE `type`='" . $_GET['view'] . "'";
-	$title = ' - Viewing ' . ucfirst( $_GET['view'] ) . ' Calls';
+	$title = ' - Viewing ' . ucfirst($_GET['view']) . ' Calls';
 }
 
 #	-DOC-	Pull all current calls for output.
@@ -44,9 +48,14 @@ if (mysqli_num_rows($calls_pull) > 0 )
 			$page[] = '				</div>';
 		}
 
-	// Employee who closed the call.
+    // Employee who closed the call.
+    $employee = '--unknown--';
+    $password = '';
+    if (isset($_COOKIE['wywo_user']))
+    {
 		$employee = $mysqli->real_escape_string($_COOKIE['wywo_user']);
-		$password = $_COOKIE['wywo_pass'];
+        $password = $_COOKIE['wywo_pass'];
+    }
 
 	// Add the close link if a WYWO admin and the call is old.
         if ($call['status'] == 'old')
@@ -110,7 +119,8 @@ if (mysqli_num_rows($calls_pull) > 0 )
 		$page[] = '				</div>';
 
 	// Put in the ability to add a note if logged in.
-		if( $_COOKIE['wywo_user'] ) {
+        if (isset($_COOKIE['wywo_user']))
+        {
 			$page[] = '				<form action="./?area=note&id=' . $call['id'] . '" class="add_note" id="add_note_' . $call['id'] . '" method="post">';
 			$page[] = '					<div class="add_text" id="add_text_' . $call['id'] . '">';
 			$page[] = '						<textarea class="note" id="textarea_' . $call['id'] . '" name="note" placeholder="New notes go here."></textarea>';

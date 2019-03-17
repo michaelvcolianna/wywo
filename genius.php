@@ -21,10 +21,24 @@ function clean_text( $str ) {
 }
 
 #	-----	Reformats a phone number into a pleasing display.
-function phone_text( $str ) {
-	$phone = str_split( $str, 3 );
-	if( count( $phone ) == 4 ) { return '(' . $phone[0] . ') ' . $phone[1] . '-' . $phone[2] . $phone[3]; }
-	else { return $phone[0] . '-' . $phone[1] . $phone[2]; }
+function phone_text($str)
+{
+    if (!empty($str))
+    {
+        $phone = str_split($str, 3);
+        if (count($phone) == 4)
+        {
+            return '(' . $phone[0] . ') ' . $phone[1] . '-' . $phone[2] . $phone[3];
+        }
+        else
+        {
+            return $phone[0] . '-' . $phone[1] . $phone[2];
+        }
+    }
+    else
+    {
+        return '???';
+    }
 }
 
 #	-----	Splits the user agent text up and discovers what kind of device is being used.
