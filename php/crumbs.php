@@ -14,7 +14,7 @@ if (isset($_COOKIE['wywo_user']))
 $title = ' - Log In';
 
 #	-----	This is to account for redirecting to the add page.
-$add = ( $_GET['go'] == 'add' ) ? '&go=add' : '';
+$add = (isset($_GET['go']) && $_GET['go'] == 'add') ? '&go=add' : '';
 
 #	-DOC-	If the AJAX check worked, actually log in.
 if (isset($_POST['login']))
