@@ -1,0 +1,30 @@
+{
+  "name": "front-end-boilerplate-2018",
+  "version": "1.0.0",
+  "description": "A basic WebPack/Babel Boilerplate",
+  "main": "ui/src/scripts/index.js",
+  "author": "Ito Pizarro",
+  "license": "ISC",
+  "scripts": {
+    "webpack_dev": "webpack",
+    "webpack_prod": "webpack -p",
+    "preinstall": "npm install --global gulp-cli"
+  },
+  "devDependencies": {
+    "axios": "^0.17.1",
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.4",
+    "babel-preset-env": "^1.6.1",
+    "es6-promise": "^4.2.4",
+    "gulp": "^4.0.0",
+    "gulp-autoprefixer": "^6.0.0",
+    "gulp-imagemin": "^4.1.0",
+    "gulp-newer": "^1.4.0",
+    "gulp-sass": "^3.1.0",
+    "gulp-sourcemaps": "^2.6.4",
+    "jquery": "^3.3.1",
+    "normalize-scss": "^7.0.1",
+    "webpack": "^3.11.0"
+  }
+}

@@ -1,0 +1,14 @@
+// fonts.scss
+// A place for any/all font variables to live (so that dependency order can be controlled in styles.scss)
+$fonts_dir: '/ui/dist/fonts';
+
+@font-face
+{
+    font-family: 'wywo';
+    src:
+        url('#{$fonts_dir}/fonts/wywo.ttf?i7dxjn') format('truetype'),
+        url('#{$fonts_dir}/fonts/wywo.woff?i7dxjn') format('woff'),
+        url('#{$fonts_dir}/fonts/wywo.svg?i7dxjn#wywo') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}

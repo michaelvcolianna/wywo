@@ -1,0 +1,18 @@
+// styles.scss
+// Controls SCSS partial/dependency order
+
+// fonts
+@import 'fonts';
+
+// vendor
+@import 'vendor/bourbon/bourbon';
+@import 'vendor/neat/neat';
+@import './node_modules/normalize-scss/sass/normalize/import-now';
+
+// vars and setup
+@import 'colors';
+@import 'variables';
+@import 'mixins';
+
+// global stuff and larger "modules"
+@import 'general';

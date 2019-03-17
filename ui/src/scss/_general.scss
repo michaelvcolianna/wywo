@@ -1,0 +1,13 @@
+// general.scss
+// Styles that span all (or most) pages
+html
+{
+    box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after
+{
+    box-sizing: inherit;
+}

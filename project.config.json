@@ -1,0 +1,45 @@
+{
+    "theme": {
+        "path": "./"
+    },
+    "source": {
+        "path": "ui/src/",
+        "images": {
+            "path": "images/",
+            "pattern": "**/*.*"
+        },
+        "fonts": {
+            "path": "fonts/",
+            "pattern": "**/*.*"
+        },
+        "sass": {
+            "path": "scss/",
+            "pattern": "**/*.scss"
+        },
+        "scripts": {
+            "path": "scripts/",
+            "pattern": "**/*.js",
+            "build": {
+                "entry": "index.js",
+                "path": "/"
+            }
+        }
+    },
+    "asset": {
+        "path": "ui/dist/",
+        "css": {
+            "path": "styles/",
+            "output": "app.css"
+        },
+        "fonts": {
+            "path": "fonts/"
+        },
+        "images": {
+            "path": "images/"
+        },
+        "scripts": {
+            "path": "scripts/",
+            "output": "app.js"
+        }
+    }
+}

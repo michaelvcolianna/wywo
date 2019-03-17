@@ -1,0 +1,18 @@
+// mixins.scss
+// Any/all mixins (so that dependency order can be controlled in styles.scss)
+
+// breakpointage
+@mixin bp( $measure ){
+  @media ( min-width: $measure ){
+    @content;
+  }
+}
+
+// base transitions
+@mixin transition( $property: all, $duration: $base-transition-duration, $easing: ease-in-out ){
+  -webkit-transition: $property $duration $easing;
+  -moz-transition: $property $duration $easing;
+  -ms-transition: $property $duration $easing;
+  -o-transition: $property $duration $easing;
+  transition: $property $duration $easing;
+}

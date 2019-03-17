@@ -1,0 +1,76 @@
+// variables.scss
+// Any/all site-wide variables (so that dependency order can be controlled in styles.scss)
+
+$screen-xs: 480px !default;
+$screen-sm: 768px !default;
+$screen-md: 992px !default;
+$screen-lg: 1024px !default;
+$screen-xl: 1440px !default;
+
+$base-transition-duration: 195ms;
+
+[class^="wywo-"], [class*=" wywo-"]
+{
+    /* use !important to prevent issues with browser extensions that change fonts */
+    font-family: 'wywo' !important;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.wywo-file-text:before
+{
+    content: "\e922";
+}
+
+.wywo-history:before
+{
+    content: "\e94d";
+}
+
+.wywo-download:before
+{
+    content: "\e960";
+}
+
+.wywo-lock:before
+{
+    content: "\e98f";
+}
+
+.wywo-unlocked:before
+{
+    content: "\e990";
+}
+
+.wywo-list:before
+{
+    content: "\e9ba";
+}
+
+.wywo-attachment:before
+{
+    content: "\e9cd";
+}
+
+.wywo-plus:before
+{
+    content: "\ea0a";
+}
+
+.wywo-cross:before
+{
+    content: "\ea0f";
+}
+
+.wywo-checkmark:before
+{
+    content: "\ea10";
+}
