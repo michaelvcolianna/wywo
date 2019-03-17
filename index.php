@@ -21,7 +21,7 @@ require('php/' . $_GET['area'] . '.php');
 	<link href="./css/<?php echo( $_GET['area'] ); ?>.css" rel="stylesheet" type="text/css" />
 	<meta content="text/html; charset=utf-8" http-equiv="content-type" />
 	<script src="./js/jquery.js" type="text/javascript"></script>
-	<script src="./js/aux.js" type="text/javascript"></script>
+	<script src="./js/gr.js" type="text/javascript"></script>
 	<title>While You Were Out<?php /* Adds the title text. */ echo( $title ); ?></title>
 </head>
 <body>

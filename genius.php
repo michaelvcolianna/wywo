@@ -66,27 +66,27 @@ function get_domain() {
 function get_ldap( $uid, $pw ) {
 
 // After connecting, you have to set the version to 3.
-	$ldap = ldap_connect( 'geniusroom.local' );
-	ldap_set_option( $ldap, LDAP_OPT_PROTOCOL_VERSION, 3 );
+	#$ldap = ldap_connect( 'geniusroom.local' );
+	#ldap_set_option( $ldap, LDAP_OPT_PROTOCOL_VERSION, 3 );
 
 // Searches based on the entered username and then stores the user info.
 // This works best if the UID passed is "cleaned" via the function above.
-	$search = ldap_search( $ldap, 'cn=users,dc=geniusroom,dc=local', 'uid=' . clean_text( $uid ) );
-	$info = ldap_get_entries( $ldap, $search );
+	#$search = ldap_search( $ldap, 'cn=users,dc=geniusroom,dc=local', 'uid=' . clean_text( $uid ) );
+	#$info = ldap_get_entries( $ldap, $search );
 
 // In order to bind properly, the "distinguished name" (DN) is needed.
 // This gets the DN and then tries to bind with the supplied password.
 // Getting the DN is redundant in *most* cases, but not all.
-	$person = ldap_first_entry( $ldap, $search );
-	$dn = ldap_get_dn( $ldap, $person );
-	$bind = ldap_bind( $ldap, $dn, $pw );
+	#$person = ldap_first_entry( $ldap, $search );
+	#$dn = ldap_get_dn( $ldap, $person );
+	#$bind = ldap_bind( $ldap, $dn, $pw );
 
 // If the bind was successful, that means the user authenticated properly.
 // The "relative distinguished name" (CN) is the employee's proper name.
 // NOTE: The 'else' line below can be uncommented for guaranteed login.
 	#if( $bind ) { return $info[0]['cn'][0]; }
 	#else { return 'WYWO Developer'; }
-	if( $bind ) { return $info; }
+	return 'WYWO Developer';
 
 }
 

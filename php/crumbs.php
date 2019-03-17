@@ -3,9 +3,11 @@
 		//	Revision: 3.0.6
 
 #	-----	Log out if already logged in.
-if( $_COOKIE['wywo_user'] ) {
-	setcookie( 'wywo_user', '' );
-	die( header( 'Location:./' ) );
+if (isset($_COOKIE['wywo_user']))
+{
+	setcookie('wywo_user', '');
+    header('Location:./');
+    exit();
 }
 
 #	-----	The title text.
@@ -15,7 +17,8 @@ $title = ' - Log In';
 $add = ( $_GET['go'] == 'add' ) ? '&go=add' : '';
 
 #	-DOC-	If the AJAX check worked, actually log in.
-if( $_POST['login'] ) {
+if (isset($_POST['login']))
+{
 
 // Check login again so the cookie can be made.
 	if( $login = get_ldap( clean_text( $_POST['username'] ), $_POST['password'] ) ) {
