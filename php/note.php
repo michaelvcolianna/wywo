@@ -33,10 +33,10 @@ if (isset($_POST['add']) && isset($_GET['id']) && is_numeric($_GET['id']))
 	$mysqli->query("INSERT INTO `notes` (`call`, `timestamp`, `employee`, `content`) VALUES ('" . $callid . "', '" . $timestamp . "', '" . $employee . "', '" . $content . "')");
 
 // If the person is a WYWO admin, update the status.
-    if (strpos($user[0]['apple-user-printattribute'][0], 'ALL' ) != FALSE)
-    {
+    #if (strpos($user[0]['apple-user-printattribute'][0], 'ALL' ) != FALSE)
+    #{
         $mysqli->query("UPDATE `calls` SET `status`='old' WHERE `id`='" . $callid . "'");
-    }
+    #}
 
 }
 

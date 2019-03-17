@@ -10,7 +10,11 @@ require('genius.php');
 require('php/basic.php');
 
 #	-----	Load the requested area or redirect if it is fake.
-if( !file_exists( './php/' . $_GET['area'] . '.php' ) ) { die( header( 'Location:./?area=view' ) ); }
+if (!file_exists('./php/' . $_GET['area'] . '.php'))
+{
+    header('Location:./?area=view');
+    exit();
+}
 require('php/' . $_GET['area'] . '.php');
 
 		// Copyright: 2010 by Michael V. Colianna ?>
@@ -42,8 +46,7 @@ require('php/' . $_GET['area'] . '.php');
 	</div>
 	<div id="links">
 		<a href="./?area=crumbs" id="link_crumbs"><?php /* Outputs the text for the crumbs page. */ echo( $crumbs ); ?></a>
-		<a href="../" id="link_return">Back to Genius Room</a>
-		<a href="./" id="link_main">Main WYWO Page</a>
+		<a href="/" id="link_main">Main WYWO Page</a>
 	</div>
 	<div id="info">
 		<span id="info_text">&copy; 2009 - 2010 by Michael V. Colianna - <a href="./?area=archive" id="link_archive">Call Archive</a></span>

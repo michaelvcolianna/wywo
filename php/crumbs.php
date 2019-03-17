@@ -21,7 +21,8 @@ if (isset($_POST['login']))
 {
 
 // Check login again so the cookie can be made.
-	if( $login = get_ldap( clean_text( $_POST['username'] ), $_POST['password'] ) ) {
+    if ($login = get_ldap(clean_text($_POST['username']), $_POST['password']))
+    {
 
 	// Account for the redirect.
 		$go = ( $_GET['go'] == 'add' ) ? '?area=add' : '';
@@ -29,10 +30,16 @@ if (isset($_POST['login']))
 	// Log 'em in and redirect accordingly.
 		setcookie( 'wywo_user', $login[0]['cn'][0] );
 		setcookie( 'wywo_pass', $_POST['password'] );
-		die( header( 'Location:./' . $go ) );
+        header('Location:./' . $go);
+        exit();
 
 // Redirect otherwise.
-	} else { die( header( './?area=crumbs' . $add ) ); }
+    }
+    else
+    {
+        header('./?area=crumbs' . $add);
+        exit();
+    }
 
 }
 

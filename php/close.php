@@ -3,7 +3,11 @@
 		//	Revision: 3.0.6
 
 #	-----	You shouldn't be here if you aren't logged in.
-if( !$_COOKIE['wywo_user'] ) { die( header( 'Location:./?area=crumbs' ) ); }
+if (!isset($_COOKIE['wywo_user']))
+{
+    header('Location:./?area=crumbs');
+    exit();
+}
 
 #	-DOC-	The removal script.
 if( is_numeric( $_GET['id'] ) ) {
@@ -19,7 +23,11 @@ if( is_numeric( $_GET['id'] ) ) {
 	$user = get_ldap( $employee, $password );
 
 // Don't let regular employees remove calls. This is a backup in case they traverse the URL.
-	if( strpos( $user[0]['apple-user-printattribute'][0], 'ALL' ) == FALSE ) { die( header( 'Location:./' ) ); }
+    #if (strpos($user[0]['apple-user-printattribute'][0], 'ALL' ) == FALSE)
+    #{
+    #    header('Location:./');
+    #    exit();
+    #}
 
 // Starts the 'info' block with the primary number.
 	$info = mysql_real_escape_string( phone_text( $call['primary'] ) );
@@ -45,6 +53,7 @@ if( is_numeric( $_GET['id'] ) ) {
 mysql_query( "OPTIMIZE TABLE `archive`" );
 mysql_query( "OPTIMIZE TABLE `calls`" );
 mysql_query( "OPTIMIZE TABLE `notes`" );
-die( header( 'Location:./' ) );
+header('Location:./');
+exit();
 
 		// Copyright: 2010 by Michael V. Colianna ?>
