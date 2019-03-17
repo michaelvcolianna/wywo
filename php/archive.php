@@ -6,8 +6,11 @@
 $title = ' - Last 20 Calls';
 
 #	-DOC-	Pull the last 20 archived calls for output.
-if( mysql_num_rows( $archive_pull = mysql_query( "SELECT * FROM `archive` ORDER BY `id` DESC LIMIT 0,20" ) ) > 0 ) {
-	while( $archive = mysql_fetch_assoc( $archive_pull ) ) {
+$archive_pull = $mysqli->query("SELECT * FROM `archive` ORDER BY `id` DESC LIMIT 0,20");
+if (mysqli_num_rows($archive_pull) > 0 )
+{
+    while ($archive = mysqli_fetch_assoc($archive_pull))
+    {
 
 	// Start the call, build the left side. Don't bug me about my page buffer.
 		$page[] = '		<div class="archive" id="archive_' . $archive['id'] . '">';
