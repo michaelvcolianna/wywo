@@ -1,7 +1,7 @@
 <?php	//	Genius Room: WYWO
 		//	Script: Main index page
 		//	Revision: 3.0.6
-
+ini_set('display_errors', true);
 #	-----	Load functions common to all GR Server apps.
 #			Then kick out front of house and mobile devices.
 require( '../genius.php' );
