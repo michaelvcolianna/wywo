@@ -1,0 +1,100 @@
+/*		Genius Room: WYWO
+		Script: Stylesheet for ADD page
+		Revision: 3.0.6
+*/
+
+#add {
+	margin: 25px 0 50px 0;
+}
+
+#add_info {
+	padding: 0 200px 25px 50px;
+}
+
+#search_text {
+	color: rgb(150,0,0);
+	display: block;
+	font-size: 15px;
+	font-weight: bold;
+}
+
+#add_text {
+	color: rgb(100,100,100);
+	display: block;
+	padding: 10px 0 0 0;
+}
+
+#add_type {
+	font-size: 12px;
+	font-weight: bold;
+	margin: 0 auto 15px auto;
+	text-align: right;
+	width: 600px;
+}
+
+#add_type label {
+	cursor: pointer;
+	margin: 0 50px 0 0;
+}
+
+#add_type label:hover {
+	color: rgb(75,75,75);
+	text-decoration: underline;
+}
+
+.add_line, #add_note {
+	font-size: 12px;
+	font-weight: bold;
+	margin: 10px auto 10px auto;
+	width: 600px;
+}
+
+.add_line input {
+	border: 1px solid rgb(235,235,235);
+	margin: -3px 0 0 0;
+	outline: 0;
+	padding: 3px 5px 4px 5px;
+	vertical-align: middle;
+	width: 200px;
+}
+
+.add_line input:focus, #add_note #note:focus {
+	border: 1px solid rgb(175,175,175);
+}
+
+.add_line label, #add_note label {
+	float: left;
+	padding: 0 5px 0 0;
+	text-align: right;
+	width: 150px;
+}
+
+#add_note label {
+	margin: 5px 0 0 0;
+}
+
+.add_line input {
+	width: 400px;
+}
+
+#add_note #note {
+	border: 1px solid rgb(235,235,235);
+	height: 50px;
+	margin: 0;
+	outline: 0;
+	padding: 5px;
+	resize: none;
+	width: 400px;
+}
+
+#add_buttons {
+	margin: auto;
+	text-align: right;
+	width: 600px;
+}
+
+#add_buttons input {
+	margin: 0 32px 0 0;
+}
+
+/*		Copyright: 2010 by Michael V. Colianna. */

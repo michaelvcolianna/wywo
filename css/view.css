@@ -1,0 +1,128 @@
+/*		Genius Room: WYWO
+		Script: Stylesheet for VIEW page
+		Revision: 3.0.6
+*/
+
+.call {
+	display: table;
+	margin: 15px 0 15px 0;
+	padding: 10px;
+	table-layout: fixed;
+	width: 100%;
+}
+
+.new {
+	border: 1px solid rgb(240,175,175);
+}
+
+.old {
+	border: 1px solid rgb(240,240,240);
+}
+
+.call_left, .call_right {
+	display: table-cell;
+	vertical-align: top;
+}
+
+.call_left {
+	width: 300px;
+}
+
+.call_name {
+	font-size: 20px;
+	font-weight: bold;
+	text-align: center;
+}
+
+.call_type {
+	color: rgb(100,100,100);
+	font-size: 11px;
+	font-weight: bold;
+	margin: 0 0 25px 0;
+	text-align: center;
+	text-transform: uppercase;
+}
+
+.call_info {
+	font-size: 12px;
+	margin: 5px 0 5px 0;
+}
+
+.call_info strong {
+	float: left;
+	padding: 0 5px 0 0;
+	text-align: right;
+	width: 100px;
+}
+
+.call_close {
+	font-size: 11px;
+	font-weight: bold;
+	margin: 25px 0 0 0;
+	text-align: center;
+	text-transform: uppercase;
+}
+
+.newest_note {
+	background: rgb(245,245,245);
+}
+
+.regular_note {
+	background: rgb(250,250,250);
+	margin: 10px 0 10px 0;
+}
+
+.note_text {
+	font-size: 12px;
+	padding: 10px;
+}
+
+.note_time {
+	color: rgb(150,150,150);
+	font-size: 10px;
+	font-weight: bold;
+	padding: 0 10px 0 10px;
+	text-align: right;
+}
+
+.note_employee {
+	font-size: 10px;
+	font-weight: bold;
+	padding: 0 10px 10px 10px;
+	text-align: right;
+	text-transform: uppercase;
+}
+
+.toggle {
+	font-size: 11px;
+	font-weight: bold;
+	margin: 10px 0 5px 0;
+	text-align: center;
+	text-transform: uppercase;
+}
+
+.toggle_text {
+	color: rgb(50,100,200);
+	cursor: pointer;
+}
+
+.toggle_text:hover {
+	color: rgb(200,50,50);
+}
+
+.add_note {
+	padding: 10px;
+	text-align: right;
+}
+
+.note {
+	/*background: rgb(250,250,250);
+	border: none;*/
+	border: 1px solid rgb(200,200,200);
+	margin: 0;
+	padding: 5px;
+	resize: none;
+	width: 100%;
+}
+
+/*		Copyright: 2010 by Michael V. Colianna. */

@@ -1,0 +1,43 @@
+/*		Genius Room: WYWO
+		Script: Stylesheet for ARCHIVE page
+		Revision: 3.0.6
+*/
+
+.archive {
+	border: 1px solid rgb(250,250,250);
+	display: table;
+	margin: 15px 0 15px 0;
+	padding: 10px;
+	table-layout: fixed;
+	width: 100%;
+}
+
+.archive_left, .archive_right {
+	display: table-cell;
+	vertical-align: top;
+}
+
+.archive_customer {
+	font-size: 20px;
+	font-weight: bold;
+	margin: 0 0 15px 0;
+}
+
+.archive_opened, .archive_closed {
+	color: rgb(100,100,100);
+	font-size: 11px;
+}
+
+.archive_info {
+	font-size: 11px;
+	margin: 0 0 10px 0;
+}
+
+.archive_note {
+	background: rgb(250,250,250);
+	font-size: 11px;
+	margin: 10px 0 10px 0;
+	padding: 5px;
+}
+
+/*		Copyright: 2010 by Michael V. Colianna. */
