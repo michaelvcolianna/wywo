@@ -9,8 +9,11 @@ if( $_GET['view'] == 'genius' || $_GET['view'] == 'business' || $_GET['view'] ==
 }
 
 #	-DOC-	Pull all current calls for output.
-if( mysql_num_rows( $calls_pull = mysql_query( "SELECT * FROM `calls`" . $search . " ORDER BY `id` DESC" ) ) > 0 ) {
-	while( $call = mysql_fetch_assoc( $calls_pull ) ) {
+$calls_pull = $mysqli->query("SELECT * FROM `calls`" . $search . " ORDER BY `id` DESC");
+if (mysqli_num_rows($calls_pull) > 0 )
+{
+    while ($call = mysqli_fetch_assoc($calls_pull))
+    {
 
 	// Start the call, build the left side. Don't bug me about my page buffer.
 		$page[] = '		<div class="call ' . $call['status'] . '" id="call_' . $call['id'] . '">';
@@ -42,14 +45,12 @@ if( mysql_num_rows( $calls_pull = mysql_query( "SELECT * FROM `calls`" . $search
 		}
 
 	// Employee who closed the call.
-		$employee = mysql_real_escape_string( $_COOKIE['wywo_user'] );
+		$employee = $mysqli->real_escape_string($_COOKIE['wywo_user']);
 		$password = $_COOKIE['wywo_pass'];
 
-	// Get employee info for ability to close.
-		$user = get_ldap( $employee, $password );
-
 	// Add the close link if a WYWO admin and the call is old.
-		if( strpos( $user[0]['apple-user-printattribute'][0], 'ALL' ) != FALSE && $call['status'] == 'old' ) {
+        if ($call['status'] == 'old')
+        {
 			$page[] = '				<div class="call_close" id="call_close_' . $call['id'] . '">';
 			$page[] = '					<a class="helped" href="./?area=close&id=' . $call['id'] . '" id="link_close_' . $call['id'] . '">Mark as Helped</a>';
 			$page[] = '				</div>';
@@ -59,10 +60,10 @@ if( mysql_num_rows( $calls_pull = mysql_query( "SELECT * FROM `calls`" . $search
 		$page[] = '			</div>';
 
 	// Pull notes for output.
-		$notes_pull = mysql_query( "SELECT * FROM `notes` WHERE `call`='" . $call['id'] . "' ORDER BY `id` DESC" );
+		$notes_pull = $mysqli->query("SELECT * FROM `notes` WHERE `call`='" . $call['id'] . "' ORDER BY `id` DESC");
 
 	// Get the newest note. (This may be the only note.)
-		$newest_note = mysql_fetch_assoc( $notes_pull );
+		$newest_note = mysqli_fetch_assoc($notes_pull);
 
 	// Start the right side with the newest note.
 		$page[] = '			<div class="call_right" id="call_right_' . $call['id'] . '">';
@@ -79,7 +80,8 @@ if( mysql_num_rows( $calls_pull = mysql_query( "SELECT * FROM `calls`" . $search
 		$page[] = '				</div>';
 
 	// If there are additional notes, put in links to show and hide them.
-		if( mysql_num_rows( $notes_pull ) > 1 ) {
+        if (mysqli_num_rows($notes_pull) > 1)
+        {
 			$page[] = '				<div class="toggle" id="show_' . $call['id'] . '">';
 			$page[] = '					<span class="toggle_text" id="show_text_' . $call['id'] . '">See All Notes...</span>';
 			$page[] = '				</div>';
@@ -90,7 +92,8 @@ if( mysql_num_rows( $calls_pull = mysql_query( "SELECT * FROM `calls`" . $search
 
 	// Output any additional notes if they exist.
 		$page[] = '				<div class="hidden" id="hidden_' . $call['id'] . '" style="display: none;">';
-		while( $note = mysql_fetch_assoc( $notes_pull ) ) {
+        while ($note = mysqli_fetch_assoc($notes_pull))
+        {
 			$page[] = '					<div class="regular_note" id="note_' . $note['id'] . '">';
 			$page[] = '						<div class="note_text" id="note_text_' . $note['id'] . '">';
 			$page[] = '							<span class="text" id="text_' . $note['id'] . '">' . str_replace( "\n", '<br />', $note['content'] ) . '</span>';
