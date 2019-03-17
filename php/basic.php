@@ -15,7 +15,7 @@ $manager_calls = mysqli_num_rows($mysqli->query("SELECT * FROM `calls` WHERE `ty
 #	-----	The text for the "login/logout" link.
 if (isset($_COOKIE['wywo_user']))
 {
-    $crumbs = 'Log Out (' . $_COOKIE['wywo_user'] . ')';
+    $crumbs = 'Log Out';
 }
 else
 {

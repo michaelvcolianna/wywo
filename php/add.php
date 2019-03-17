@@ -4,30 +4,38 @@
 
 #	-----	You shouldn't be here if you aren't logged in.
 #			NOTE: Added a "go" command so after login it redirects here.
-if( !$_COOKIE['wywo_user'] ) { die( header( 'Location:./?area=crumbs&go=add' ) ); }
+if (!isset($_COOKIE['wywo_user']))
+{
+    header('Location:./?area=crumbs&go=add');
+    exit();
+}
 
 #	-----	The title text.
 $title = ' - Add a Call';
 
 #	-DOC-	The call injection. Checks that "save" was pressed.
 #			The check for Magic Quotes is there due to different runtime environments.
-if( $_POST['save'] ) {
+if (isset($_POST['save']))
+{
 
-// Employee name.			
-	$employee = mysql_real_escape_string( $_COOKIE['wywo_user'] );
+// Employee name.
+	$employee = $mysqli->real_escape_string($_COOKIE['wywo_user']);
 
 // Type of call. MQ check.
-	$type = ( get_magic_quotes_gpc() || get_magic_quotes_runtime() ) ? $_POST['type'] : mysql_real_escape_string( $_POST['type'] );
+	$type = $_POST['type'];
 
 // Customer name. MQ check.
-	$customer = ( get_magic_quotes_gpc() || get_magic_quotes_runtime() ) ? ucwords( strtolower( $_POST['customer'] ) ) : mysql_real_escape_string( ucwords( strtolower( $_POST['customer'] ) ) );
+	$customer = ucwords(strtolower($_POST['customer']));
 
 // Checks that the repair number is 8-10 characters, otherwise it doesn't put one. MQ check.
-	if( strlen( $_POST['repair'] ) == 8 || strlen( $_POST['repair'] ) == 9 || strlen( $_POST['repair'] ) == 10 ) { $repair = ( get_magic_quotes_gpc() || get_magic_quotes_runtime() ) ? strtoupper( $_POST['repair'] ) : mysql_real_escape_string( strtoupper( $_POST['repair'] ) ); }
+    if (strlen($_POST['repair']) == 8 || strlen($_POST['repair']) == 9 || strlen($_POST['repair'] ) == 10)
+    {
+        $repair = strtoupper($_POST['repair']);
+    }
 
 // Removes superfluous characters from the numbers if necessary. MQ check.
-	$primary = ( get_magic_quotes_gpc() || get_magic_quotes_runtime() ) ? strtoupper( clean_text( $_POST['primary'] ) ) : mysql_real_escape_string( strtoupper( clean_text( $_POST['primary'] ) ) );
-	$secondary = ( get_magic_quotes_gpc() || get_magic_quotes_runtime() ) ? strtoupper( clean_text( $_POST['secondary'] ) ) : mysql_real_escape_string( strtoupper( clean_text( $_POST['secondary'] ) ) );
+	$primary = strtoupper(clean_text($_POST['primary']));
+	$secondary = strtoupper(clean_text( $_POST['secondary']));
 
 // If the numbers are the right length, cuts 1s off the front of phone numbers. Otherwise unsets them.
 // Yeah, this is harsh.
@@ -40,17 +48,18 @@ if( $_POST['save'] ) {
 	$timestamp = time();
 
 // The note the employee entered. MQ check.
-	$content = ( get_magic_quotes_gpc() || get_magic_quotes_runtime() ) ? $_POST['note'] : mysql_real_escape_string( $_POST['note'] );
+	$content = $_POST['note'];
 
 // Inserts the call, gets the ID of the new call, then puts the note in.
-	mysql_query( "INSERT INTO `calls` (`type`, `timestamp`, `customer`, `repair`, `primary`, `secondary`, `status`) VALUES ('" . $type . "', '" . $timestamp . "', '" . $customer . "', '" . $repair . "', '" . $primary . "', '" . $secondary . "', 'new')" );
-	$callid = mysql_insert_id();
-	mysql_query( "INSERT INTO `notes` (`call`, `timestamp`, `employee`, `content`) VALUES ('" . $callid . "', '" . $timestamp . "', '" . $employee . "', '" . $content . "')" );
+	$mysqli->query( "INSERT INTO `calls` (`type`, `timestamp`, `customer`, `repair`, `primary`, `secondary`, `status`) VALUES ('" . $type . "', '" . $timestamp . "', '" . $customer . "', '" . $repair . "', '" . $primary . "', '" . $secondary . "', 'new')" );
+	$callid = mysqli_insert_id($mysqli);
+	$mysqli->query( "INSERT INTO `notes` (`call`, `timestamp`, `employee`, `content`) VALUES ('" . $callid . "', '" . $timestamp . "', '" . $employee . "', '" . $content . "')" );
 
 // Optimize tables and redirect.
-	mysql_query( "OPTIMIZE TABLE `calls`" );
-	mysql_query( "OPTIMIZE TABLE `notes`" );
-	die( header( 'Location:./' ) );
+	$mysqli->query( "OPTIMIZE TABLE `calls`" );
+	$mysqli->query( "OPTIMIZE TABLE `notes`" );
+    header('Location:./');
+    exit();
 
 }
 
