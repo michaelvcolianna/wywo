@@ -4,15 +4,15 @@
 ini_set('display_errors', true);
 #	-----	Load functions common to all GR Server apps.
 #			Then kick out front of house and mobile devices.
-require( '../genius.php' );
+require('genius.php');
 if( get_domain() == 'foh' || get_device() != 'Macintosh' ) { die( header( 'Location:../' ) ); }
 
 #	-----	Load basic WYWO functions.
-require( './php/basic.php' );
+require('php/basic.php');
 
 #	-----	Load the requested area or redirect if it is fake.
 if( !file_exists( './php/' . $_GET['area'] . '.php' ) ) { die( header( 'Location:./?area=view' ) ); }
-require( './php/' . $_GET['area'] . '.php' );
+require('php/' . $_GET['area'] . '.php');
 
 		// Copyright: 2010 by Michael V. Colianna ?>
 <!DOCTYPE html PUBLIC "-//W3C//TD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
