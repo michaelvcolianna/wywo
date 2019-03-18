@@ -1,7 +1,20 @@
-<?php	//	Genius Room: WYWO
+<?php
+
+define('APP_DIR', __DIR__);
+require_once __DIR__ . '/vendor/autoload.php';
+
+$loader = new \Twig\Loader\FilesystemLoader(__DIR__ . '/views/templates');
+$twig = new \Twig\Environment($loader, [
+    'auto_reload' => true,
+    'cache' => __DIR__ . '/views/cache',
+    'debug' => true,
+]);
+$twig->addExtension(new \Twig\Extension\DebugExtension());
+
+    	//	Genius Room: WYWO
 		//	Script: Main index page
 		//	Revision: 3.0.6
-ini_set('display_errors', true);
+
 #	-----	Load functions common to all GR Server apps.
 #			Then kick out front of house and mobile devices.
 require('genius.php');
