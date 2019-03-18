@@ -1,0 +1,39 @@
+{% extends '_layout/base.html.twig' %}
+
+{% block content %}
+    <form action="./?area=add" id="add" method="post">
+        <div id="add_info">
+            <span id="search_text">Did you search the full list to see if a call already exists?</span>
+            <span id="add_text">Enter as much information as you can. If there is an extension for the number, add it as part of the notes.</span>
+        </div>
+        <div id="add_type">
+            <input checked="checked" id="type_genius" name="type" type="radio" value="genius" /> <label for="type_genius" id="label_genius">Genius</label>
+            <input id="type_business" name="type" type="radio" value="business" /> <label for="type_business" id="label_business">Business</label>
+            <input id="type_manager" name="type" type="radio" value="manager" /> <label for="type_manager" id="label_manager">Manager</label>
+        </div>
+        <div class="add_line" id="add_name">
+            <label for="customer" id="label_customer">Customer Name:</label>
+            <input id="customer" name="customer" placeholder="Required" type="text" />
+        </div>
+        <div class="add_line" id="add_repair">
+            <label for="repair" id="label_repair">Repair #:</label>
+            <input id="repair" name="repair" placeholder="Optional" type="text" />
+        </div>
+        <div class="add_line" id="add_name">
+            <label for="primary" id="label_primary">Primary Phone:</label>
+            <input id="primary" name="primary" placeholder="Required" type="text" />
+        </div>
+        <div class="add_line" id="add_name">
+            <label for="secondary" id="label_secondary">Secondary Phone:</label>
+            <input id="secondary" name="secondary" placeholder="Optional" type="text" />
+        </div>
+        <div id="add_note">
+            <label for="note" id="label_note">Notes:</label>
+            <textarea id="note" name="note" placeholder="Required"></textarea>
+        </div>
+        <div id="add_buttons">
+            <input class="button" id="save" name="save" type="submit" value="Save" />
+            <input class="button" id="cancel" name="cancel" type="reset" value="Cancel" />
+        </div>
+    </form>
+{% endblock %}

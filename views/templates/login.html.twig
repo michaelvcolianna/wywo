@@ -1,0 +1,20 @@
+{% extends '_layout/base.html.twig' %}
+
+{% block content %}
+		<form action="/login" id="login" method="post">
+			<div id="login_information">
+				<span id="information_text">Logging in requires you to have made your server account. If you haven't done this, please see one of the managers or a member of the Genius team.</span>
+			</div>
+			<div id="login_username">
+				<label for="username" id="label_username">Username:</label>
+				<input id="username" name="username" placeholder="Required" type="text" />
+			</div>
+			<div id="login_password">
+				<label for="password" id="label_password">Password:</label>
+				<input id="password" name="password" placeholder="Required" type="password" />
+			</div>
+			<div id="login_go">
+				<input class="button" id="login_button" name="login" type="submit" value="Log In" />
+			</div>
+		</form>
+{% endblock %}

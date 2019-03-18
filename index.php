@@ -3,6 +3,45 @@
 define('ROOT_DIR', __DIR__);
 require_once ROOT_DIR . '/vendor/autoload.php';
 
+$pages = [
+    'add' => 'add',
+    'archive' => 'archive',
+    'all' => 'calls',
+    'genius' => 'calls',
+    'business' => 'calls',
+    'manager' => 'calls',
+    'login' => 'login',
+];
+$actions = [
+    'close',
+    'note',
+    'logout',
+];
+$request = explode('/', trim($_SERVER['REQUEST_URI'], '/'))[0];
+
+if (!$request)
+{
+    $request = 'all';
+}
+
+if ($request && in_array($request, $actions))
+{
+    // take the action
+    die('valid action');
+    header('Location:/');
+    exit();
+}
+
+if ($request && array_key_exists($request, $pages))
+{
+    $template = $pages[$request] . '.html.twig';
+}
+else
+{
+    header('Location:/');
+    exit();
+}
+
 $loader = new \Twig\Loader\FilesystemLoader(ROOT_DIR . '/views/templates');
 $twig = new \Twig\Environment($loader, [
     'auto_reload' => true,
@@ -10,8 +49,6 @@ $twig = new \Twig\Environment($loader, [
     'debug' => true,
 ]);
 $twig->addExtension(new \Twig\Extension\DebugExtension());
-
-// die('<pre>' . print_r($_SERVER, true) . '</pre>');
 
 $vars = [
     'title' => 'All Calls',
@@ -21,9 +58,10 @@ $vars = [
     'manager_calls' => 4,
     'page' => [],
     'logged_in' => false,
+    'debug' => print_r($_SERVER, true),
 ];
 
-echo $twig->render('index.html.twig', $vars);
+echo $twig->render($template, $vars);
 
     	//	Genius Room: WYWO
 		//	Script: Main index page

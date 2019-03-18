@@ -1,0 +1,70 @@
+{% extends '_layout/base.html.twig' %}
+
+{% block content %}
+    <div class="call new" id="call_79">
+        <div class="call_left" id="call_left_79">
+            <div class="call_name" id="call_name_79">
+                <span class="name_text" id="name_text_79">Test Customer</span>
+            </div>
+            <div class="call_type" id="call_type_79">
+                <span class="type_text" id="type_text_79">For Test Team</span>
+            </div>
+            <div class="call_info" id="call_repair_79">
+                <span class="repair_text" id="repair_text_79"><strong>Repair:</strong> R12345678</span>
+            </div>
+            <div class="call_info" id="call_primary_79">
+                <span class="primary_text" id="primary_text_79"><strong>Phone #1:</strong> 800-555-1234</span>
+            </div>
+            <div class="call_info" id="call_secondary_79">
+                <span class="secondary_text" id="secondary_text_79"><strong>Phone #2:</strong> 800-888-4321</span>
+            </div>
+            <div class="call_close" id="call_close_79">
+                <a class="helped" href="/close/79" id="link_close_79">Mark as Helped</a>
+            </div>
+        </div>
+        <div class="call_right" id="call_right_79">
+            <div class="newest_note" id="newest_note_79">
+                <div class="note_text" id="newest_text_79">
+                    <span class="text" id="new_text_79">This is a test note.</span>
+                </div>
+                <div class="note_time" id="newest_time_79">
+                    <span class="time" id="new_time_79">March 18th, 2019 @ 5:10pm</span>
+                </div>
+                <div class="note_employee" id="newest_employee_79">
+                    <span class="employee" id="new_employee_79">Employee Name</span>
+                </div>
+            </div>
+            <div class="toggle" id="show_79">
+                <span class="toggle_text" id="show_text_79">See All Notes...</span>
+            </div>
+            <div class="toggle" id="hide_79" style="display: none;">
+                <span class="toggle_text" id="hide_text_79">Hide Notes...</span>
+            </div>
+            <div class="hidden" id="hidden_79" style="display: none;">
+                <div class="regular_note" id="note_79">
+                    <div class="note_text" id="note_text_79">
+                        <span class="text" id="text_79">This is an older test note.</span>
+                    </div>
+                    <div class="note_time" id="note_time_79">
+                        <span class="time" id="time_79">March 18th, 2019 @ 5:00pm</span>
+                    </div>
+                    <div class="note_employee" id="note_employee_79">
+                        <span class="employee" id="employee_79">Employee Name</span>
+                    </div>
+                </div>
+                <!-- End of notes -->
+            </div>
+            <form action="/note/79" class="add_note" id="add_note_79" method="post">
+                <div class="add_text" id="add_text_79">
+                    <textarea class="note" id="textarea_79" name="note" placeholder="New notes go here."></textarea>
+                </div>
+                <div class="add_button" id="add_button_79">
+                    <input class="button" id="add_79" name="add" type="submit" value="Add Note" />
+                </div>
+            </form>
+        </div>
+    </div>
+    <div id="empty">
+        <span id="empty_text">No calls...</span>
+    </div>
+{% endblock %}

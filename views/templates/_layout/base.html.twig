@@ -20,9 +20,7 @@
                 <a href="/add" id="link_add">Add a Call</a>
             </div>
             <div id="body">
-                {% for value in page %}
-                    {{ value }}
-                {% endfor %}
+                {% block content %}{% endblock %}
             </div>
             <div id="links">
                 {% if logged_in %}
@@ -36,6 +34,8 @@
                 <span id="info_text">&copy; 2009 - 2019 by Michael V. Colianna</span>
             </div>
         </div>
+
+        <pre>{{ debug }}</pre>
 
         <script src="/ui/dist/scripts/app.js"></script>
     </body>
