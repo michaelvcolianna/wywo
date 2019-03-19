@@ -42,12 +42,8 @@ class Core extends Base
     {
         $this->variables = [
             'title' => 'All Calls',
-            'all_calls' => 27,
-            'genius_calls' => 15,
-            'business_calls' => 8,
-            'manager_calls' => 4,
             'page' => $this->page,
-            'logged_in' => false,
+            'user_name' => 'MVC',
             'calls' => [
                 'all' => Calls::getCurrent( $this->db ),
                 'genius' => Calls::getCurrent( $this->db, 'genius' ),

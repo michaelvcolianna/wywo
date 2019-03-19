@@ -12,59 +12,70 @@
                     <div class="call_type" id="call_type{{ call.id }}">
                         <span class="type_text" id="type_text{{ call.id }}">For {{ call.type|title }} Team</span>
                     </div>
-                    <div class="call_info" id="call_repair{{ call.id }}">
-                        <span class="repair_text" id="repair_text{{ call.id }}"><strong>Repair:</strong> {{ call.repair }}</span>
-                    </div>
+                    {% if call.repair %}
+                        <div class="call_info" id="call_repair{{ call.id }}">
+                            <span class="repair_text" id="repair_text{{ call.id }}"><strong>Repair:</strong> {{ call.repair }}</span>
+                        </div>
+                    {% endif %}
                     <div class="call_info" id="call_primary{{ call.id }}">
-                        <span class="primary_text" id="primary_text{{ call.id }}"><strong>Phone #1:</strong> {{ call.primary }}</span>
+                        <span class="primary_text" id="primary_text{{ call.id }}"><strong>Phone #1:</strong> {{ call.primary|default('n/a') }}</span>
                     </div>
-                    <div class="call_info" id="call_secondary{{ call.id }}">
-                        <span class="secondary_text" id="secondary_text{{ call.id }}"><strong>Phone #2:</strong> {{ call.secondary|default('n/a') }}</span>
-                    </div>
-                    <div class="call_close" id="call_close{{ call.id }}">
-                        <a class="helped" href="/close/{{ call.id }}" id="link_close{{ call.id }}">Mark as Helped</a>
-                    </div>
+                    {% if call.secondary %}
+                        <div class="call_info" id="call_secondary{{ call.id }}">
+                            <span class="secondary_text" id="secondary_text{{ call.id }}"><strong>Phone #2:</strong> {{ call.secondary }}</span>
+                        </div>
+                    {% endif %}
+                    {% if user_name and call.status == 'old' %}
+                        <div class="call_close" id="call_close{{ call.id }}">
+                            <a class="helped" href="/close/{{ call.id }}" id="link_close{{ call.id }}">Mark as Helped</a>
+                        </div>
+                    {% endif %}
                 </div>
                 <div class="call_right" id="call_right{{ call.id }}">
                     <div class="newest_note" id="newest_note{{ call.id }}">
                         <div class="note_text" id="newest_text{{ call.id }}">
-                            <span class="text" id="new_text{{ call.id }}">This is a test note.</span>
+                            <span class="text" id="new_text{{ call.id }}">{{ call.newest_note.content|nl2br }}</span>
                         </div>
                         <div class="note_time" id="newest_time{{ call.id }}">
-                            <span class="time" id="new_time{{ call.id }}">March 18th, 2019 @ 5:10pm</span>
+                            <span class="time" id="new_time{{ call.id }}">{{ call.newest_note.timestamp|date( 'M jS, Y @ g:ia' ) }}</span>
                         </div>
                         <div class="note_employee" id="newest_employee{{ call.id }}">
-                            <span class="employee" id="new_employee{{ call.id }}">Employee Name</span>
+                            <span class="employee" id="new_employee{{ call.id }}">{{ call.newest_note.employee }}</span>
                         </div>
                     </div>
-                    <div class="toggle" id="show{{ call.id }}">
-                        <span class="toggle_text" id="show_text{{ call.id }}">See All Notes...</span>
-                    </div>
-                    <div class="toggle" id="hide{{ call.id }}" style="display: none;">
-                        <span class="toggle_text" id="hide_text{{ call.id }}">Hide Notes...</span>
-                    </div>
-                    <div class="hidden" id="hidden{{ call.id }}" style="display: none;">
-                        <div class="regular_note" id="note{{ call.id }}">
-                            <div class="note_text" id="note_text{{ call.id }}">
-                                <span class="text" id="text{{ call.id }}">This is an older test note.</span>
+                    {% if call.notes|length > 0 %}
+                        <div class="toggle" id="show{{ call.id }}">
+                            <span class="toggle_text" id="show_text{{ call.id }}">See All Notes...</span>
+                        </div>
+                        <div class="toggle" id="hide{{ call.id }}">
+                            <span class="toggle_text" id="hide_text{{ call.id }}">Hide Notes...</span>
+                        </div>
+                        <div class="hidden" id="hidden{{ call.id }}">
+                            {% for note in call.notes %}
+                                <div class="regular_note" id="note{{ call.id }}">
+                                    <div class="note_text" id="note_text{{ call.id }}">
+                                        <span class="text" id="text{{ call.id }}">{{ note.content|nl2br }}</span>
+                                    </div>
+                                    <div class="note_time" id="note_time{{ call.id }}">
+                                        <span class="time" id="time{{ call.id }}">{{ note.timestamp|date( 'M jS, Y @ g:ia' ) }}</span>
+                                    </div>
+                                    <div class="note_employee" id="note_employee{{ call.id }}">
+                                        <span class="employee" id="employee{{ call.id }}">{{ note.employee }}</span>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                    {% if user_name %}
+                        <form action="/note/{{ call.id }}" class="add_note" id="add_note{{ call.id }}" method="post">
+                            <div class="add_text" id="add_text{{ call.id }}">
+                                <textarea class="note" id="textarea{{ call.id }}" name="note" placeholder="New notes go here."></textarea>
                             </div>
-                            <div class="note_time" id="note_time{{ call.id }}">
-                                <span class="time" id="time{{ call.id }}">March 18th, 2019 @ 5:00pm</span>
+                            <div class="add_button" id="add_button{{ call.id }}">
+                                <input class="button" id="add{{ call.id }}" name="add" type="submit" value="Add Note" />
                             </div>
-                            <div class="note_employee" id="note_employee{{ call.id }}">
-                                <span class="employee" id="employee{{ call.id }}">Employee Name</span>
-                            </div>
-                        </div>
-                        <!-- End of notes -->
-                    </div>
-                    <form action="/note/{{ call.id }}" class="add_note" id="add_note{{ call.id }}" method="post">
-                        <div class="add_text" id="add_text{{ call.id }}">
-                            <textarea class="note" id="textarea{{ call.id }}" name="note" placeholder="New notes go here."></textarea>
-                        </div>
-                        <div class="add_button" id="add_button{{ call.id }}">
-                            <input class="button" id="add{{ call.id }}" name="add" type="submit" value="Add Note" />
-                        </div>
-                    </form>
+                        </form>
+                    {% endif %}
                 </div>
             </div>
         {% endfor %}

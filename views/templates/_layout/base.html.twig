@@ -23,7 +23,7 @@
                 {% block content %}{% endblock %}
             </div>
             <div id="links">
-                {% if logged_in %}
+                {% if user_name %}
                     <a href="/logout" id="link_crumbs">Log Out ({{ user_name }})</a>
                 {% else %}
                     <a href="/login" id="link_crumbs">Log In</a>
@@ -34,8 +34,6 @@
                 <span id="info_text">&copy; 2009 - 2019 by Michael V. Colianna</span>
             </div>
         </div>
-
-        <pre>{{ debug }}</pre>
 
         <script src="/ui/dist/scripts/app.js"></script>
     </body>
