@@ -2,7 +2,9 @@
 		//	Script: Genius Room common functions
 		//	Revision: 1.1.2
 
-$mysqli = new mysqli('localhost', 'root', 'universe', 'concierge');
+$sql_user = (getenv('C9_HOSTNAME')) ? 'mcolianna' : 'root';
+$sql_pass = (getenv('C9_HOSTNAME')) ? '' : 'universe';
+$mysqli = new mysqli('localhost', $sql_user, $sql_pass, 'concierge');
 if ($mysqli->connect_error)
 {
     $error = [
