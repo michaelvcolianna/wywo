@@ -1,5 +1,5 @@
 <?php
-
+ini_set('display_errors', 1);
 define('ROOT_DIR', __DIR__);
 require_once ROOT_DIR . '/vendor/autoload.php';
 

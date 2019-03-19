@@ -1,28 +1,38 @@
 {% extends '_layout/base.html.twig' %}
 
+{% block title %}Last 20 Calls{% endblock %}
 {% block content %}
-    <div class="archive" id="archive_79">
-        <div class="archive_left" id="archive_left_79">
-            <div class="archive_customer" id="archive_customer_79">
-                <span class="customer_text" id="customer_text_79">Test Customer</span>
+    {% if calls.archive|length > 0 %}
+        {% for call in calls.archive %}
+            <div class="archive" id="archive{{ call.id }}">
+                <div class="archive_left" id="archive_left{{ call.id }}">
+                    <div class="archive_customer" id="archive_customer{{ call.id }}">
+                        <span class="customer_text" id="customer_text{{ call.id }}">{{ call.customer }}</span>
+                    </div>
+                    <div class="archive_opened" id="archive_opened{{ call.id }}">
+                        <span class="opened_text" id="opened_text{{ call.id }}"><strong>Added:</strong> {{ call.opened|date( 'M jS, Y @ g:ia' ) }}</span>
+                    </div>
+                    <div class="archive_closed" id="archive_closed{{ call.id }}">
+                        <span class="closed_text" id="closed_text{{ call.id }}"><strong>Closed:</strong> {{ call.closed|date( 'M jS, Y @ g:ia' ) }} by {{ call.employee }}</span>
+                    </div>
+                    <div class="archive_info" id="archive_info{{ call.id }}">
+                        <span class="info_text" id="info_text{{ call.id }}">{{ call.info }}</span>
+                    </div>
+                </div>
+                <div class="archive_right" id="archive_right{{ call.id }}">
+                    {% for note in call.notes %}
+                        {% if note %}
+                            <div class="archive_note" id="archive{{ call.id }}_note{{ call.id }}">
+                                <span class="archive_text" id="archive{{ call.id }}_text{{ call.id }}">{{ note }}</span>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
             </div>
-            <div class="archive_opened" id="archive_opened_79">
-                <span class="opened_text" id="opened_text_79"><strong>Added:</strong> March 18th, 2019 @ 4:45pm</span>
-            </div>
-            <div class="archive_closed" id="archive_closed_79">
-                <span class="closed_text" id="closed_text_79"><strong>Closed:</strong> March 18th, 2019 @ 4:50pm by Employee Name</span>
-            </div>
-            <div class="archive_info" id="archive_info_79">
-                <span class="info_text" id="info_text_79">800-555-1234 / 800-888-4321</span>
-            </div>
+        {% endfor %}
+    {% else %}
+        <div id="empty">
+            <span id="empty_text">No calls...</span>
         </div>
-        <div class="archive_right" id="archive_right_79">
-            <div class="archive_note" id="archive_79_note_79">
-                <span class="archive_text" id="archive_79_text_79">03/18/2019 at 12:52pm by Employee Name: called about his computer that's been out for a couple of weeks.  Very concerned about where it is and wants to speak to Admin.  Supposedly it's on the way back from depot.  Nice guy.  He's just really anxious about his status.</span>
-            </div>
-        </div>
-    </div>
-    <div id="empty">
-        <span id="empty_text">No calls...</span>
-    </div>
+    {% endif %}
 {% endblock %}
