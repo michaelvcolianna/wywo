@@ -17,7 +17,9 @@
                 <a href="/genius" id="link_genius">View Genius ({{ calls.genius|length }})</a>
                 <a href="/business" id="link_business">View Business ({{ calls.business|length }})</a>
                 <a href="/manager" id="link_manager">View Manager ({{ calls.manager|length }})</a>
-                <a href="/add" id="link_add">Add a Call</a>
+                {% if user_name %}
+                    <a href="/add" id="link_add">Add a Call</a>
+                {% endif %}
             </div>
             <div id="body">
                 {% block content %}{% endblock %}
