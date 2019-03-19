@@ -6,6 +6,6 @@ require_once ROOT_DIR . '/vendor/autoload.php';
 $Wywo = new \Wywo\Core();
 $Wywo->handleActions();
 $Wywo->setTemplate();
-$Wywo->setVariables();
+$Wywo->assembleVariables();
 
 echo $Wywo->render();

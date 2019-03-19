@@ -3,20 +3,20 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover">
-        <title>While You Were Out | {{ title }}</title>
+        <title>While You Were Out | {% block title %}{% endblock title %}</title>
         <link rel="stylsheet" href="/ui/dist/styles/app.css">
     </head>
 
     <body>
         <div id="wrapper">
             <div id="title">
-                <span id="title_text">While You Were Out | {{ title }}</span>
+                <span id="title_text">While You Were Out | {{ block('title') }}</span>
             </div>
             <div id="navigation">
-                <a href="/" id="link_all">View All ({{ all_calls }})</a>
-                <a href="/genius" id="link_genius">View Genius ({{ genius_calls }})</a>
-                <a href="/business" id="link_business">View Business ({{ business_calls }})</a>
-                <a href="/manager" id="link_manager">View Manager ({{ manager_calls }})</a>
+                <a href="/" id="link_all">View All ({{ calls.all|length }})</a>
+                <a href="/genius" id="link_genius">View Genius ({{ calls.genius|length }})</a>
+                <a href="/business" id="link_business">View Business ({{ calls.business|length }})</a>
+                <a href="/manager" id="link_manager">View Manager ({{ calls.manager|length }})</a>
                 <a href="/add" id="link_add">Add a Call</a>
             </div>
             <div id="body">
