@@ -4,6 +4,7 @@ namespace Wywo;
 
 use Wywo\Base;
 use Wywo\Actions\Auth;
+use Wywo\Actions\Close;
 use Wywo\Actions\Entry;
 use Wywo\Actions\Note;
 use Wywo\Pages\Archive;
@@ -29,13 +30,18 @@ class Core extends Base
             {
                 if ( $this->page == 'create' )
                 {
-                    // Pretending validation has occurred
+                    // Pretending validation has occurred here.
                     Entry::create( $this->db, $this->form );
                 }
 
                 if ( $this->page == 'note' )
                 {
                     Note::add( $this->db, $this->value, $this->form );
+                }
+
+                if ( $this->page == 'close' )
+                {
+                    Close::archive( $this->db, $this->value );
                 }
             }
 
