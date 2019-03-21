@@ -4,6 +4,7 @@ namespace Wywo;
 
 use Wywo\Base;
 use Wywo\Actions\Auth;
+use Wywo\Actions\Entry;
 use Wywo\Pages\Archive;
 use Wywo\Pages\Calls;
 
@@ -21,6 +22,12 @@ class Core extends Base
             if ( $this->page == 'logout' )
             {
                 Auth::logout();
+            }
+
+            if ( $this->page == 'create' && !empty( Auth::getUsername() ) )
+            {
+                // Pretending validation has occurred
+                Entry::create( $this->db, $this->form );
             }
 
             header( 'Location:/' );

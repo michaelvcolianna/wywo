@@ -5,7 +5,7 @@ namespace Wywo;
 abstract class Base
 {
     const VIEWS_DIR     = ROOT_DIR . '/views/templates';
-    const VALID_ACTIONS = [ 'close', 'note', 'login', 'logout' ];
+    const VALID_ACTIONS = [ 'close', 'create', 'login', 'logout' ];
     const VALID_PAGES   = [
         'add'      => 'add',
         'archive'  => 'archive',
@@ -18,6 +18,7 @@ abstract class Base
     protected $page;
     protected $type;
     protected $value;
+    protected $formdata;
     protected $db;
     protected $twig;
     protected $template;
@@ -36,6 +37,7 @@ abstract class Base
         $this->page = ( !empty( $request[0] ) ) ? $request[0] : 'all';
         $this->type = self::VALID_PAGES[$this->page];
         $this->value = $request[1] ?? null;
+        $this->form = filter_input_array( INPUT_POST, FILTER_SANITIZE_STRING );
 
         $dsn  = 'mysql:dbname=concierge;host=127.0.0.1';
         $user = (getenv('C9_HOSTNAME')) ? 'mcolianna' : 'root';
