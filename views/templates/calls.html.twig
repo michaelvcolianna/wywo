@@ -4,7 +4,7 @@
 {% block content %}
     {% if calls[page]|length > 0 %}
         {% for call in calls[page] %}
-            <div class="call new" id="call{{ call.id }}">
+            <div class="call {{ call.status }}" id="call{{ call.id }}">
                 <div class="call_left" id="call_left{{ call.id }}">
                     <div class="call_name" id="call_name{{ call.id }}">
                         <span class="name_text" id="name_text{{ call.id }}">{{ call.customer }}</span>

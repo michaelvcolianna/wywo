@@ -11,3 +11,166 @@ html
 {
     box-sizing: inherit;
 }
+
+[class^="wywo-"], [class*=" wywo-"]
+{
+    /* use !important to prevent issues with browser extensions that change fonts */
+    font-family: 'wywo' !important;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.wywo-file-text:before
+{
+    content: "\e922";
+}
+
+.wywo-history:before
+{
+    content: "\e94d";
+}
+
+.wywo-download:before
+{
+    content: "\e960";
+}
+
+.wywo-lock:before
+{
+    content: "\e98f";
+}
+
+.wywo-unlocked:before
+{
+    content: "\e990";
+}
+
+.wywo-list:before
+{
+    content: "\e9ba";
+}
+
+.wywo-attachment:before
+{
+    content: "\e9cd";
+}
+
+.wywo-plus:before
+{
+    content: "\ea0a";
+}
+
+.wywo-cross:before
+{
+    content: "\ea0f";
+}
+
+.wywo-checkmark:before
+{
+    content: "\ea10";
+}
+
+body
+{
+	font: 13px 'Lucida Grande', sans-serif;
+	margin: 0;
+}
+
+a
+{
+	color: rgb(50,100,200);
+	text-decoration: none;
+}
+
+a:hover
+{
+	color: rgb(200,50,50);
+}
+
+#wrapper
+{
+	margin: 25px auto 25px auto;
+	width: 800px;
+}
+
+#title
+{
+	font-size: 30px;
+	font-weight: bold;
+}
+
+#navigation,
+#links {
+	border-bottom: 1px solid rgb(240,240,240);
+	border-top: 1px solid rgb(240,240,240);
+	font-size: 13px;
+	font-weight: bold;
+	padding: 5px 0 5px 0;
+}
+
+#navigation
+{
+    a
+    {
+    	margin: 0 25px 0 0;
+    }
+}
+
+#body
+{
+	margin: 15px 0 15px 0;
+}
+
+#links
+{
+	text-align: right;
+
+    a
+    {
+    	margin: 0 0 0 25px;
+    }
+}
+
+#info
+{
+	color: rgb(150,150,150);
+	font-size: 11px;
+	padding: 5px 0 5px 0;
+	text-align: center;
+
+    a
+    {
+    	font-weight: bold;
+    }
+}
+
+.button
+{
+	background: transparent;
+	border: none;
+	color: rgb(50,100,200);
+	cursor: pointer;
+	font: bold 13px 'Lucida Grande';
+	margin: 0;
+	padding: 0;
+
+    &:hover {
+    	color: rgb(200,50,50);
+    }
+}
+
+#empty
+{
+	color: rgb(150,150,150);
+	font-size: 40px;
+	font-style: italic;
+	padding: 50px 0 50px 0;
+}
