@@ -5,7 +5,7 @@ namespace Wywo;
 abstract class Base
 {
     const VIEWS_DIR     = ROOT_DIR . '/views/templates';
-    const VALID_ACTIONS = [ 'close', 'create', 'login', 'logout' ];
+    const VALID_ACTIONS = [ 'close', 'create', 'note', 'login', 'logout' ];
     const VALID_PAGES   = [
         'add'      => 'add',
         'archive'  => 'archive',
